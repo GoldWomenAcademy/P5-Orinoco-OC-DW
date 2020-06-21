@@ -1,13 +1,22 @@
 {
-  "name": "orinoco-backend",
+  "name": "p5-orinoco-oc-dw",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "live-server",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoldWomenAcademy/P5-Orinoco-OC-DW.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoldWomenAcademy/P5-Orinoco-OC-DW/issues"
+  },
+  "homepage": "https://github.com/GoldWomenAcademy/P5-Orinoco-OC-DW#readme",
   "dependencies": {
     "bcrypt": "^3.0.8",
     "body-parser": "^1.18.3",
