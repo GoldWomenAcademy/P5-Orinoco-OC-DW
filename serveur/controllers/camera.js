@@ -11,8 +11,8 @@ exports.getAllCameras = (req, res, next) => {
       res.status(200).json(mappedCameras);
     }
   ).catch(
-    () => {
-      res.status(500).send(new Error('Database error!'));
+    (error) => {
+      res.status(400).send(error);
     }
   );
 };
@@ -27,8 +27,8 @@ exports.getOneCamera = (req, res, next) => {
       res.status(200).json(camera);
     }
   ).catch(
-    () => {
-      res.status(500).send(new Error('Database error!'));
+    (error) => {
+      res.status(500).send(error);
     }
   )
 };
@@ -61,15 +61,12 @@ exports.orderCameras = (req, res, next) => {
     const queryPromise = new Promise((resolve, reject) => {
       Camera.findById(productId).then(
         (camera) => {
-          if (!camera) {
-            reject('Camera not found: ' + productId);
-          }
           camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
           resolve(camera);
         }
       ).catch(
-        () => {
-          reject('Database error!');
+        (error) => {
+          reject(error);
         }
       )
     });
@@ -86,7 +83,7 @@ exports.orderCameras = (req, res, next) => {
     }
   ).catch(
     (error) => {
-      return res.status(500).json(new Error(error));
+      return res.status(500).json(new Error('There was a problem with your order!'));
     }
   );
 };
